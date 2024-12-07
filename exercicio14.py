@@ -13,23 +13,25 @@ Certifique-se de que suas funções retornam os valores no formato "Mês/Ano" (p
 
 import json
 
+def get_maior_ipca(dados):
+    ipca_12_meses = [dado for dado in dados if dado["D2C"] == "2265"]
+    maior_dado = max(ipca_12_meses, key=lambda x: x["V"])
+    return maior_dado["D3N"]
 
-def get_maior_ipca():
-    # Implemente a lógica para encontrar o maior IPCA
-    pass
 
-
-def get_menor_ipca():
-    # Implemente a lógica para encontrar o menor IPCA
-    pass
+def get_menor_ipca(dados):
+    ipca_12_meses = [dado for dado in dados if dado.get("D2C") == "2265"]
+    menor_dado = min(ipca_12_meses, key=lambda x: x["V"])
+    return menor_dado["D3N"]
 
 
 def main():
-    maior = get_maior_ipca()
-    menor = get_menor_ipca()
-
-    print(f"Maior IPCA acumulado para 12 meses: {maior}")
-    print(f"Menor IPCA acumulado para 12 meses: {menor}")
+    with open("dados/dados_ibge_ipca.json", "r", encoding="utf-8-sig") as file:
+        dados = json.load(file)
+        maior = get_maior_ipca(dados)
+        menor = get_menor_ipca(dados)
+        print(f"Maior IPCA acumulado para 12 meses: {maior}")
+        print(f"Menor IPCA acumulado para 12 meses: {menor}")
 
 
 if __name__ == "__main__":
