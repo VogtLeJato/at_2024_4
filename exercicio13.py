@@ -11,9 +11,22 @@ Siga as instruções abaixo:
 Certifique-se de que o arquivo 'saida.txt' seja criado e que cada linha única apareça apenas uma vez.
 """
 
+def retorna_lista_sem_repeticoes(linhas_repetidas : list):
+    linhas_sem_repeticao = []
+    linhas_repetidas = [x.strip() for x in linhas_repetidas]
+    [linhas_sem_repeticao.append(x) for x in linhas_repetidas if x not in linhas_sem_repeticao]
+    return linhas_sem_repeticao
+
 
 def remover_linhas_duplicadas(entrada, saida):
-    pass  # Implemente sua solução aqui.
+    linhas_sem_repeticao = []
+
+    with open(entrada, 'r', encoding="utf-8-sig") as arquivo:
+        linhas_repetidas = list(arquivo.readlines())
+        linhas_sem_repeticao = retorna_lista_sem_repeticoes(linhas_repetidas)
+    
+    with open(saida, 'w') as arquivo:
+        arquivo.write(str(linhas_sem_repeticao))
 
 
 def main():

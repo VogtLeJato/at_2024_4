@@ -4,10 +4,15 @@ Crie uma função chamada adicionar_tarefa que deve receber um nome de arquivo e
 Caso o arquivo não exista, crie o arquivo com esse nome. Caso exista, adicione a tarefa no final do arquivo.
 """
 
+import os
 
 def adicionar_tarefa(nome_arquivo, tarefa):
-    pass  # Implementar a função
-
+    if os.path.exists(nome_arquivo):
+        with open(nome_arquivo, 'a') as arquivo:
+            arquivo.write(f"\n{tarefa}")
+    else:
+        with open(nome_arquivo, 'w') as arquivo:
+            arquivo.write(tarefa)
 
 def main():
     # Exemplo de uso
