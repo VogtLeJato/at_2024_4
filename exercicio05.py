@@ -13,8 +13,7 @@ Sua função deve retornar o seguinte dicionário:
 
 
 def listas_para_dicionario(chaves, valores):
-    return None
-
+    return dict(zip(chaves, valores))
 
 def main():
     chaves = ["nome", "idade", "cidade"]

@@ -23,4 +23,5 @@ Por que esse código pode ser considerado uma má prática quando se trata de tr
 
 # Resposta:
 """
+Quando ocorrer um exceção, não será retornada uma informação relevante de onde está o problema, esta perte do código terá de ser refatorada, para auxiliar na investigação do problema. 
 """

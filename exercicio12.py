@@ -16,7 +16,26 @@ filtrar_linhas('entrada.txt', 'saida.txt', 'palavra')
 
 
 def filtrar_linhas(entrada, saida, palavra):
-    pass
+    try:
+        indices_linhas_com_palavra = []
+
+        with open(entrada, 'r', encoding='utf-8-sig') as arquivo_entrada:
+            linhas = arquivo_entrada.readlines()
+            contador = 0
+            for linha in linhas:
+                if palavra in linha:
+                    indices_linhas_com_palavra.append(contador)
+                contador += 1
+
+        with open(saida,'w') as arquivo_saida:
+            arquivo_saida.write(str(indices_linhas_com_palavra))
+
+    except FileNotFoundError as e:
+        print(f"O arquivo de entrada não exite {e}")
+        return
+    except Exception as e:
+        print(f"Um erro inesperado ocorreu {e}")
+        return
 
 
 def main():

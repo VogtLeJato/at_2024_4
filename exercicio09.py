@@ -17,9 +17,25 @@ Retorno esperado:
 }
 """
 
-
 def ler_csv(nome_arquivo, separador=","):
-    pass  # Implementação a ser feita
+    try:
+        with open(nome_arquivo, 'r', encoding='utf-8-sig') as arquivo:
+            linhas = arquivo.readlines()
+            chaves = linhas[0].strip().split(separador)
+            dicionario = {}
+            for chave in chaves:
+                dicionario[chave] = []
+            for linha in linhas[1:]:
+                valores = linha.strip().split(separador)
+                contador = 0
+                for valor in valores:
+                    dicionario[chaves[contador]].append(valor)
+                    contador += 1
+            return dicionario
+    except FileNotFoundError as e:
+        print(f"Arquivo não encontrado: {e}")
+    except Exception as e:
+        print(f"Um erro inesperado ocorreu ao ler o arquivo csv: {e}")
 
 
 def main():

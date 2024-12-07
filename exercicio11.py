@@ -13,10 +13,21 @@ Para usar a função você pode fazer algo como:
 escrever_arquivo('resultado.txt', 5)   # Isso deve escrever 25 no arquivo
 escrever_arquivo('resultado.txt', 'teste') # Isso deve escrever TESTE no arquivo
 """
-
+def retorna_informacao_gravar(informacao):
+    if type(informacao) == str:
+        return str(informacao.lower())
+    if type(informacao) == int or type(informacao) == float:
+        return str(informacao * informacao)
+    return None
 
 def escrever_arquivo(nome_arquivo, informacao):
-    pass
+    try:
+        informacao_gravar = retorna_informacao_gravar(informacao)
+        with open(nome_arquivo, 'w') as arquivo:
+            arquivo.write(informacao_gravar)
+    except Exception as e:
+        print(f"Ocorreu um erro ao escrever, no arquivo, a informação passada {e}")
+        return
 
 
 def main():

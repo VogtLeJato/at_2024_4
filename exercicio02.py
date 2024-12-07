@@ -7,7 +7,10 @@ Utilize um bloco try-except para tratar a exceção de divisão por zero.
 
 
 def dividir(num1, num2):
-    pass  # Implemente a lógica da função aqui
+    try:
+        return num1/num2
+    except:
+        print("Não é possível dividir por 0")
 
 
 def main():

@@ -11,8 +11,13 @@ Dicas:
 
 
 def contar_a_palavra_alice():
-    pass
-
+    conteudo = ''
+    local_arquivo = 'dados/alice.txt'
+    with open(local_arquivo, 'r', encoding='utf-8-sig') as arquivo:
+        conteudo = arquivo.read()
+        conteudo = conteudo.lower()
+        contador = conteudo.count('alice')
+        print(contador)
 
 def main():
     quantidade = contar_a_palavra_alice()

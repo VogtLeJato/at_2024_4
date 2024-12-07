@@ -14,8 +14,11 @@ Dica: Utilize a operação de diferença entre sets do Python.
 
 
 def itens_faltantes(items_possuidos, items_desejados):
-    return None
-
+    diferentes = []
+    for desejado in items_desejados:
+        if desejado not in items_possuidos:
+            diferentes.append(desejado)
+    return diferentes
 
 # Versão de teste
 def main():

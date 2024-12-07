@@ -6,6 +6,21 @@ Não leia o arquivo inteiro para realizar a tarefa, pois o arquivo pode ser muit
 
 
 def extrair_informacoes(nome_arquivo):
+    #'título', 'autor' e 'língua'
+    with open(nome_arquivo,'r',encoding='utf-8-sig') as arquivo:
+        informacoes_livro = {"titulo": "", "autor": "", "lingua": ""}
+        for linha in arquivo:
+            if "" not in informacoes_livro.values():
+                return informacoes_livro
+            
+            if 'title' in linha.lower():
+                informacoes_livro["titulo"] = linha[(linha.index(":")+2):-1]
+
+            if 'author' in linha.lower():
+                informacoes_livro["autor"] = linha[(linha.index(":")+2):-1]
+
+            if 'language' in linha.lower():
+                informacoes_livro["lingua"] = linha[(linha.index(":")+2):-1]
     pass
 
 
