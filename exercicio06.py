@@ -17,11 +17,11 @@ def contar_a_palavra_alice():
         conteudo = arquivo.read()
         conteudo = conteudo.lower()
         contador = conteudo.count('alice')
-        print(contador)
+        return contador
 
 def main():
     quantidade = contar_a_palavra_alice()
-    if quantidade:
+    if not quantidade:
         print(quantidade)
     else:
         print(f"A palavra 'Alice' aparece {quantidade} vezes no texto.")
